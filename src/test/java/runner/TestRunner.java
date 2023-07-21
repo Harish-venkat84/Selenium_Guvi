@@ -1,70 +1,30 @@
 package runner;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.testng.annotations.Test;
 
-public class TestRunner {
+import base.BaseClass;
+
+public class TestRunner extends BaseClass {
 	
-	public static WebDriver driver;
 	
-	@Test(priority = 1)
-	public static void chromeLaunch() {
+	public static void selectorshub() {
 		
-		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\Drivers\\chromedriver.exe");
+		chromeLaunch();
 		
-		driver = new ChromeDriver();
+		driver.get("https://selectorshub.com/xpath-practice-page/");
 		
-		driver.manage().window().maximize();
+		driver.findElement(By.xpath("//input[@id = 'userId']")).sendKeys("gmail@gmail.com");
+		driver.findElement(By.xpath("//input[@id = 'pass']")).sendKeys("123456789");
+		driver.findElement(By.xpath("//input[@name = 'company']")).sendKeys("selectorhub");
+		driver.findElement(By.xpath("//input[@name = 'mobile number']")).sendKeys("7823219932");
+		driver.findElement(By.xpath("//input[@value= 'Submit']")).click();
 		
-		driver.get("https://chromedriver.chromium.org/getting-started");
-		
-		try {
-			
-			Thread.sleep(3000);
-			
-		} catch (InterruptedException e) {
-			
-			e.printStackTrace();
-		}
-		
-		WebElement text = driver.findElement(By.id(""));
-		text.sendKeys("java");
-		
-		
-		driver.close();
-	}
-	
-	@Test(priority = 2)
-	public static void edgeLaunch() {
-		
-		System.setProperty("webdriver.edge.driver", System.getProperty("user.dir")+"\\Drivers\\msedgedriver.exe");
-		
-		driver = new EdgeDriver();
-		
-		driver.manage().window().maximize();
-		
-		driver.get("https://chromedriver.chromium.org/getting-started");
-		
-		try {
-			
-			Thread.sleep(3000);
-			
-		} catch (InterruptedException e) {
-			
-			e.printStackTrace();
-		}
-		
-		driver.close();
 	}
 	
 	public static void main(String[] args) {
-		
-		chromeLaunch();
-		edgeLaunch();
+	
+		selectorshub();
+	
 	}
-
+	
 }
