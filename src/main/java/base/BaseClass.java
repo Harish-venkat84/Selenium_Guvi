@@ -20,7 +20,7 @@ public static WebDriver driver;
 
 public static Robot robo;
 
-public static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+public static WebDriverWait wait;
 
 public static JavascriptExecutor js = (JavascriptExecutor) driver;
 
@@ -45,19 +45,27 @@ public static JavascriptExecutor js = (JavascriptExecutor) driver;
 		driver.get(str);
 	}
 	
+	public static WebDriverWait webDriverWait() {
+		
+		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		
+		return wait;
+	}
+	
 	public static void textToBePresent(String xpath, String text) {
 		
-		wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath(xpath), text));
+		
+		webDriverWait().until(ExpectedConditions.textToBePresentInElementLocated(By.xpath(xpath), text));
 	}
 	
 	public static void textToBePresentInElement(WebElement element, String str) {
 		
-		wait.until(ExpectedConditions.textToBePresentInElement(element, str));
+		webDriverWait().until(ExpectedConditions.textToBePresentInElement(element, str));
 	}
 	
 	public static void presenceOfAllElementsLocatedBy(String xpath) {
 		
-		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(xpath)));
+		webDriverWait().until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(xpath)));
 	}
 	
 	public static void scrollIntoView(WebElement element) {

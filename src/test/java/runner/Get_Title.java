@@ -8,7 +8,7 @@ import base.BaseClass;
 
 public class Get_Title extends BaseClass{
 
-	public static void getTitle() throws AWTException {
+	public static void getTitle() throws AWTException, InterruptedException {
 		
 		chromeLaunch();
 		
@@ -22,6 +22,8 @@ public class Get_Title extends BaseClass{
 		
 		System.out.println(driver.getTitle());
 		
+		Thread.sleep(2000);
+		
 		driver.close();
 		
 	}
@@ -32,7 +34,7 @@ public class Get_Title extends BaseClass{
 		try {
 			getTitle();
 			
-		} catch (AWTException e) {
+		} catch (Exception e) {
 			
 			e.printStackTrace();
 		}
