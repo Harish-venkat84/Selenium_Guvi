@@ -1,0 +1,10 @@
+
+
+
+	go to the sources and in the left side select --> Snippets and select --> + New snippet
+	
+	Then copy the below code and past and run the snippet. After 3 seconds the DOM page will Stop rendering 
+
+	setTimeout(function() {
+	debugger;
+	}, 3000);

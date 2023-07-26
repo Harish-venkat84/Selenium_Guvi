@@ -20,7 +20,7 @@ public class Get_Links extends BaseClass {
 		getURL("https://www.google.com/");
 
 		driver.findElement(By.xpath("//textarea[@name = 'q']")).sendKeys("selenium ide");
-
+		
 		pressEnter();
 
 		boolean con = true;
@@ -53,12 +53,15 @@ public class Get_Links extends BaseClass {
 
 				} else {
 
+					System.out.println("else break");
 					con = false;
 					break;
 				}
 
 			} catch (Exception e) {
 
+				System.out.println("catch break");
+				
 				break;
 			}
 
@@ -66,16 +69,43 @@ public class Get_Links extends BaseClass {
 
 		System.out.println(links);
 	}
+	
+	
+	public static void eachURL() throws InterruptedException {
+		
+		for (int i = 0; i < links.size(); i++) {
+			
+			if(i <= 10) {
+				
+				driver.navigate().to(links.get(i));
+				
+				Thread.sleep(2000);
+				
+			}else {
+				
+				break;
+			}
+			
+		}
+		
+		driver.quit();
+	}
 
 	public static void main(String[] args) {
 
 		try {
 
 			links();
+			
+			eachURL();
 
 		} catch (AWTException e) {
 
-			e.printStackTrace();
+			System.out.println("AWTException");
+			
+		} catch (Exception e) {
+			
+			System.out.println("InterruptedException");
 		}
 
 	}
