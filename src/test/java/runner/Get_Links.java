@@ -29,13 +29,13 @@ public class Get_Links extends BaseClass {
 
 			try {
 				
-				textToBePresent("//span[text() = 'Next']", "Next");
+				textToBePresent("//span[text() = 'Next']", "Next", 10);
 
 				WebElement next = driver.findElement(By.xpath("//span[text() = 'Next']"));
 				
-				textToBePresentInElement(next, "Next");
+				textToBePresentInElement(next, "Next", 6);
 				
-				presenceOfAllElementsLocatedBy("//h3//parent::a[@href]");
+				presenceOfAllElementsLocatedBy("//h3//parent::a[@href]", 7);
 
 				List<WebElement> elements = driver.findElements(By.xpath("//h3//parent::a[@href]"));
 

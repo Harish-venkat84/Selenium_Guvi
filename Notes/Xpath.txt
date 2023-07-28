@@ -1,0 +1,55 @@
+Types of X-path
+
+1) Absolute XPath
+
+2) Relative XPath
+
+
+	Xpath=//input[@type='text']
+	
+	Xpath=//label[@id='message23']
+	
+	Xpath=//input[@value='RESET']
+	
+	Xpath=//*[@class='barone']
+	
+	Xpath=//a[@href='http://demo.guru99.com/']
+	
+	Xpath=//img[@src='//guru99.com/images/home/java.png']
+	
+	Xpath=//*[contains(@id,'message')]
+	
+	Xpath=//*[contains(text(),'here')]
+	
+	Xpath=//*[contains(@href,'guru99.com')]
+	
+	Xpath=//*[@type='submit' or @name='btnReset']
+	
+	Xpath=//input[@type='submit' and @name='btnLogin']
+	
+	Xpath=//label[starts-with(@id,'message')]
+	
+	Xpath=//td[text()='UserID']
+	
+	Xpath=//*[text()='Enterprise Testing']//ancestor::div
+	
+	Xpath=//*[@id='rt-feature']//parent::div
+	
+	Xpath=//*[@id='java_technologies']//child::li
+	
+	Xpath=//*[@type='submit']//preceding::input
+	
+	Xpath=//*[@type='text']//following::input
+	
+	xpath=//*[@type='submit']//following-sibling::input
+	
+	Xpath=//*[@id='rt-feature']//descendant::a
+	
+	Xpath =//*[@type='password']//self::input
+	
+
+	
+	
+	
+	
+	

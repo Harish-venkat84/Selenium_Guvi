@@ -13,6 +13,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -49,27 +50,38 @@ public static Select select;
 		driver.get(str);
 	}
 	
-	public static WebDriverWait webDriverWait() {
+	
+	public static void implicitlyWait() {
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	}
+	
+	public static WebDriverWait webDriverWait(long sec) {
+		
+		long secs = 10;
+		
+		if (wait == null || sec != secs) {
 			
-		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			wait = new WebDriverWait(driver, Duration.ofSeconds(sec));
+		}
 		
 		return wait;
 	}
 	
 	
-	public static void textToBePresent(String xpath, String text) {
+	public static void textToBePresent(String xpath, String text, long sec) {
 		
-		webDriverWait().until(ExpectedConditions.textToBePresentInElementLocated(By.xpath(xpath), text));
+		webDriverWait(sec).until(ExpectedConditions.textToBePresentInElementLocated(By.xpath(xpath), text));
 	}
 	
-	public static void textToBePresentInElement(WebElement element, String str) {
+	public static void textToBePresentInElement(WebElement element, String str, long sec) {
 		
-		webDriverWait().until(ExpectedConditions.textToBePresentInElement(element, str));
+		webDriverWait(sec).until(ExpectedConditions.textToBePresentInElement(element, str));
 	}
 	
-	public static void presenceOfAllElementsLocatedBy(String xpath) {
+	public static void presenceOfAllElementsLocatedBy(String xpath, long sec) {
 		
-		webDriverWait().until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(xpath)));
+		webDriverWait(sec).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(xpath)));
 	}
 	
 	public static void scrollIntoView(WebElement element) {
@@ -77,6 +89,16 @@ public static Select select;
 		js = (JavascriptExecutor) driver;
 		
 		js.executeScript("arguments[0].scrollIntoView();", element);
+	}
+	
+	
+	public static FluentWait<WebDriver> fluentWait() {
+		
+		FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+				.withTimeout(Duration.ofSeconds(11))
+				.pollingEvery(Duration.ofSeconds(1));
+		
+		return wait;
 	}
 	
 	public static Robot roboObj() throws AWTException {

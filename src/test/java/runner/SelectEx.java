@@ -59,7 +59,6 @@ public class SelectEx extends BaseClass{
 	
 	public static void multiDropdown() {
 		
-
 		
 		WebElement multiColour = driver.findElement(By.xpath("//div[text()= 'Select...']"));
 		
