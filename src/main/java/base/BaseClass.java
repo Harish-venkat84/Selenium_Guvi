@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.time.Duration;
 import java.util.List;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -189,9 +190,8 @@ public static Select select;
 		driver.navigate().refresh();
 	}
 	
-	public static void main(String[] args) {
+	public static Alert switchToAlert() {
 		
-		chromeLaunch();
-		edgeLaunch();
+		return driver.switchTo().alert();
 	}
 }

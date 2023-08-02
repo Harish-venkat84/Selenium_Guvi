@@ -38,6 +38,28 @@ public class SeleniumWait extends BaseClass{
 		driver.findElement(By.xpath("//a[@class = 'cart-icon']")).click();
 		driver.findElement(By.xpath("//button[text() = 'PROCEED TO CHECKOUT']")).click();
 		
+		List<WebElement> quantity = driver.findElements(By.xpath("//table//child::tbody//child::td//child::p[@class = 'quantity']"));
+		
+		List<WebElement> price = driver.findElements(By.xpath("//table//child::tbody//child::td[4]//child::p[@class = 'amount']"));
+		
+		int amount = 0;
+		
+		for (int i = 0; i < quantity.size(); i++) {
+			
+			int qty =  Integer.parseInt(quantity.get(i).getText());
+			int pri = Integer.parseInt(price.get(i).getText());
+			
+			amount = amount + (qty * pri);
+		}
+		
+		int totalAmount = Integer.parseInt(driver.findElement(By.xpath("//span[@class = 'totAmt']")).getText());
+		
+		if (amount == totalAmount) {
+			
+			System.out.println("Total amount are equal "+amount);
+		}
+		
+		
 		WebElement apply = driver.findElement(By.xpath("//button[text() = 'Apply']"));
 		apply.click();
 		
@@ -71,7 +93,23 @@ public class SeleniumWait extends BaseClass{
 		
 		if (valid.equals("Code applied ..!")) {
 			
-			System.out.println("Test pass");
+			System.out.println("Promo code applied");
+			
+		}
+		
+		String dis = driver.findElement(By.xpath("//span[@class = 'discountPerc']")).getText();
+		
+		double discount = Integer.parseInt(dis.substring(0, 2));
+		
+		double discountPrice = Double.valueOf(driver.findElement(By.xpath("//span[@class = 'discountAmt']")).getText());
+		
+		double discountTotalAmount = (amount * discount) / 100;
+		
+		discountTotalAmount = amount - discountTotalAmount;
+		
+		if (discountPrice == discountTotalAmount) {
+			
+			System.out.println("discount price are equal");
 		}
 	}
 	
