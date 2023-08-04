@@ -9,10 +9,12 @@ import java.util.List;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
@@ -29,6 +31,8 @@ public static WebDriverWait wait;
 public static JavascriptExecutor js;
 
 public static Select select;
+
+public static Actions action;
 
 	public static void chromeLaunch() {
 		
@@ -59,12 +63,7 @@ public static Select select;
 	
 	public static WebDriverWait webDriverWait(long sec) {
 		
-		long secs = 10;
-		
-		if (wait == null || sec != secs) {
-			
-			wait = new WebDriverWait(driver, Duration.ofSeconds(sec));
-		}
+		wait = new WebDriverWait(driver, Duration.ofSeconds(sec));
 		
 		return wait;
 	}
@@ -116,7 +115,6 @@ public static Select select;
 		
 		roboObj().keyPress(KeyEvent.VK_ENTER);
 		roboObj().keyRelease(KeyEvent.VK_ENTER);
-		
 	}
 	
 	public static void pressCtrl() throws AWTException {
@@ -193,5 +191,25 @@ public static Select select;
 	public static Alert switchToAlert() {
 		
 		return driver.switchTo().alert();
+	}
+	
+	public static Actions action_obj() {
+		
+		action = new Actions(driver);
+		
+		return action;
+	}
+	
+	public static void action_Drag_Drop(WebElement source, WebElement target) {
+		
+		action_obj().dragAndDrop(source, target).build().perform();
+		
+	}
+	
+	
+	@SuppressWarnings("static-access")
+	public static void action_keyDown(WebElement element, Keys key, String sendkeys) {
+		
+		action_obj().keyDown(element, key.SHIFT).sendKeys(sendkeys).build().perform();
 	}
 }
