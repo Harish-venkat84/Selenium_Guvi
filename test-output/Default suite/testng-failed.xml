@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="runner.TestRunner">
+      <class name="assignmentsSelenium.DiscountPercentage">
         <methods>
-          <include name="edgeLaunch"/>
+          <include name="productNames"/>
         </methods>
-      </class> <!-- runner.TestRunner -->
+      </class> <!-- assignmentsSelenium.DiscountPercentage -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

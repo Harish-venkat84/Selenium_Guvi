@@ -56,6 +56,11 @@ public static Actions action;
 	}
 	
 	
+	public static void driverQuit() {
+		
+		driver.quit();
+	}
+	
 	public static void implicitlyWait() {
 		
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
