@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Test(failed)">
+  <test thread-count="5" name="Edge(failed)">
+    <parameter name="BrowserName" value="Edge"/>
     <classes>
-      <class name="testNG.AtTestProperties">
+      <class name="testNG.CrossBrowserTest">
         <methods>
-          <include name="testCase3"/>
+          <include name="testCases"/>
+          <include name="driverQuit"/>
+          <include name="driver_Launch"/>
         </methods>
-      </class> <!-- testNG.AtTestProperties -->
+      </class> <!-- testNG.CrossBrowserTest -->
     </classes>
-  </test> <!-- Test(failed) -->
+  </test> <!-- Edge(failed) -->
 </suite> <!-- Failed suite [Suite] -->
